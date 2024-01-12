@@ -9,6 +9,9 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Color } from "../../misc/Colors";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Carousel from "react-native-snap-carousel";
+import Carouselslider from "../../components/carouselslider/Carouselslider";
+import Manga from "../mangadoc/Manga";
 
 const Home = ({navigation}) => {
 
@@ -28,11 +31,12 @@ const Home = ({navigation}) => {
           <Header/>
         </View>
         <View style={styles.featuredContent}>
-          <Image
+          {/* <Image
             source={require("../../../assets/anime_world.jpg")}
             style={styles.featuredImage}
-          />
+          /> */}
           {/* <Text style={styles.featuredText}>Featured Content</Text> */}
+          <Carouselslider/>
         </View>
         <View style={styles.categories}>
           <Text style={styles.categoryTitle}>Popular Categories</Text>

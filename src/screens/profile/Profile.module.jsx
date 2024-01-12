@@ -21,14 +21,35 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'cover',
       },
+      editProfileIcon: {
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        backgroundColor: "black",
+        padding: 10,
+        borderRadius: 30,
+        zIndex:1
+      },
+    
+      editProfileIconText: {
+        color: 'white',
+        fontSize: 15,
+      },
       userInfo: {
         alignItems: 'center',
         marginBottom: 20,
+        flexDirection:"row"
       },
       userName: {
         fontSize: 24,
         fontWeight: 'bold',
         color: 'black',
+        marginLeft:40,
+        marginTop:10
+      },
+      editProfileIconTransparent: {
+        backgroundColor: 'transparent',
+        marginLeft: 20,
       },
       detailsContainer: {
         flexDirection: 'row',
@@ -84,6 +105,30 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: Color.TITLECOLOR,
       },
+      editButtonText: {
+        color: 'blue', 
+        fontSize: 20,
+      },
+      saveButtonText: {
+        // color: Color.MAINCOLOR,
+        color:"black",      
+        fontSize: 16,       
+        fontWeight: 'bold', 
+      },
+      editInputContainer:{
+        flexDirection:"row"
+      },
+      editInput:{
+        width:330
+      },
+      editInputWithBorder: {
+        borderColor: 'black', // Change this to the color you want for the border
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 5,
+        width:200
+      },
+    
 });
 
 export default styles;

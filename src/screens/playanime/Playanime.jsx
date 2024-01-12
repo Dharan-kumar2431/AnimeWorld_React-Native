@@ -5,8 +5,10 @@ import { recommendedAnime } from "../../components/shared/Categoryies";
 import Footer from "../../components/footer/Footer";
 import { FontAwesome } from "@expo/vector-icons";
 import Header from "../../components/header/Header";
+import YouTubePlayer from "../youtubevideoplay/Youtubevideoplay";
 
 const Playanime = ({ route, navigation }) => {
+  const youtubeLink = "https://www.youtube.com/watch?v=2qCmRJz3NOE"
   const { anime } = route.params;
   console.log(anime, "play anime");
 
@@ -20,14 +22,16 @@ const Playanime = ({ route, navigation }) => {
         <Header/>
       </View>
       <ScrollView>
-        <Video
+        {/* <Video
           source={{
             uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           }}
           style={styles.videoPlayer}
           useNativeControls
           resizeMode="cover"
-        />
+        /> */}
+
+        <YouTubePlayer videoId={youtubeLink}/>
 
         <View style={styles.animeDetailsContainer}>
           <Text style={styles.animeTitle}>{anime.name}</Text>
