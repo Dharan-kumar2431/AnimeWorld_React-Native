@@ -27,6 +27,11 @@ const Header = () => {
     setMenuVisible(false)
   }
 
+  const handleSearch = () => {
+    navigation.navigate("Search");
+    setMenuVisible(false)
+  }
+
   return (
     <View style={styles.header}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -45,6 +50,9 @@ const Header = () => {
       </View>
       {isMenuVisible && (
         <View style={styles.menuContainer}>
+           <TouchableOpacity onPress={()=> handleSearch()}>
+            <Text style={styles.menuItem}>Search</Text>
+          </TouchableOpacity>
           <TouchableOpacity>
             <Text style={styles.menuItem}>Setting</Text>
           </TouchableOpacity>

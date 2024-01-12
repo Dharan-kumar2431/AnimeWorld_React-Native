@@ -11,6 +11,7 @@ import Manga from "./src/screens/mangadoc/Manga";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import QuizPage from "./src/screens/games/Animequiz";
+import SearchPage from "./src/screens/searchanime/Searchanime";
 
 const stack = createNativeStackNavigator();
 
@@ -55,6 +56,7 @@ export default function App() {
       try {
         await AsyncStorage.setItem("userData", JSON.stringify(userData));
         await AsyncStorage.setItem("isLoggedIn", "true");
+        return true;
       } catch (error) {
         console.error("Error storing user data:", error);
       }
@@ -105,6 +107,11 @@ export default function App() {
         <stack.Screen
           name="Quiz"
           component={QuizPage}
+          options={{ headerShown: false }}
+        />
+        <stack.Screen
+          name="Search"
+          component={SearchPage}
           options={{ headerShown: false }}
         />
       </stack.Navigator>
