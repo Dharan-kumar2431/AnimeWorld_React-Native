@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import styles from './Animequiz.module';
-import { View, Text, TouchableOpacity} from 'react-native';
-import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
-import { quizData } from '../../components/shared/Categoryies';
-import Header from '../../components/header/Header';
-import { Color } from '../../misc/Colors';
-import Slider from '@react-native-community/slider';
-
+import React, { useState } from "react";
+import styles from "./Animequiz.module";
+import { View, Text, TouchableOpacity } from "react-native";
+import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
+import { quizData } from "../../components/shared/Categoryies";
+import Header from "../../components/header/Header";
+import { Color } from "../../misc/Colors";
+import Slider from "@react-native-community/slider";
 
 const QuizPage = () => {
   const [answers, setAnswers] = useState(Array(quizData.length).fill(null));
   const [currentStep, setCurrentStep] = useState(0);
-  const [animeSliderValue,setAnimeSliderValue] = useState(0)
+  const [animeSliderValue, setAnimeSliderValue] = useState(0);
 
   const handleNext = () => {
     setCurrentStep(currentStep + 1);
@@ -28,17 +27,17 @@ const QuizPage = () => {
   };
 
   const handleSliderChange = (value) => {
-    console.log('Slider value:', value);
-    setAnimeSliderValue(value)
+    console.log("Slider value:", value);
+    setAnimeSliderValue(value);
   };
 
   const renderOptions = () => {
     const currentQuestion = quizData[currentStep];
 
     return (
-        <View style={{ padding: 16 }}>
+      <View style={{ padding: 16 }}>
         <Text style={styles.question}>{currentQuestion.question}</Text>
-        {currentQuestion.type === 'options' ? (
+        {currentQuestion.type === "options" ? (
           currentQuestion.options.map((option, index) => (
             <TouchableOpacity
               key={index}
@@ -64,12 +63,13 @@ const QuizPage = () => {
           <View style={{ flex: 1 }}>
             <Slider
               value={animeSliderValue}
-              onValueChange={(value) => handleSliderChange(value)}
+              onValueChange={(value) => setAnimeSliderValue(value)}
+              onSlidingComplete={(value) => handleSliderChange(value)}
               minimumValue={0}
               maximumValue={10}
               step={1}
             />
-            <Text style={{ textAlign: 'center', marginTop: 10 }}>
+            <Text style={{ textAlign: "center", marginTop: 10 }}>
               {`Selected Value: ${animeSliderValue}`}
             </Text>
           </View>
@@ -79,10 +79,10 @@ const QuizPage = () => {
   };
 
   return (
-    <View style={{ flex: 1,backgroundColor:Color.MAINCOLOR}}>
-        <View>
-            <Header/>
-        </View>
+    <View style={{ flex: 1, backgroundColor: Color.MAINCOLOR }}>
+      <View>
+        <Header />
+      </View>
       <ProgressSteps
         activeStep={currentStep}
         progressBarColor="white"
@@ -91,9 +91,9 @@ const QuizPage = () => {
         activeStepIconBorderColor="#007AFF"
         activeStepIconColor="#007AFF"
       >
-        {quizData.map((_, step) => (
+        {quizData.map((value,step) => (
           <ProgressStep
-            key={step}
+            key={step} 
             label={`Question ${step + 1}`}
             onNext={handleNext}
             onPrevious={handlePrev}

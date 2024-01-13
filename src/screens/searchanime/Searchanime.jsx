@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, FlatList, Text, Image } from "react-native";
+import { View, Text } from "react-native";
 import styles from "./Searchanime.module";
 import { SearchBar } from "react-native-elements";
 import axios from "axios";
@@ -47,11 +47,9 @@ const SearchPage = () => {
       />
 
       {searchResults.length > 0 ? (
-        <FlatList
-          data={searchResults}
-          keyExtractor={(item) => item.code}
-          renderItem={({ item }) => (
-            <View style={styles.resultItem}>
+        <View style={styles.resultContainer}>
+          {searchResults.map((item) => (
+            <View key={item.code} style={styles.resultItem}>
               <SvgUri
                 width={40}
                 height={25}
@@ -60,8 +58,8 @@ const SearchPage = () => {
               />
               <Text style={styles.countryName}>{item.name}</Text>
             </View>
-          )}
-        />
+          ))}
+        </View>
       ) : (
         <Text>No results found</Text>
       )}
